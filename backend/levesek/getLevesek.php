@@ -1,9 +1,7 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
-
 $SQL = '';
 $SQL = 'SELECT * FROM levesek where 1';
-require_once "../database.php";
+require_once "./database.php";
 $result = $connection->query($SQL);
 if ($result->num_rows > 0) {
     $etelek = array();
