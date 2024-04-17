@@ -1,18 +1,19 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     var table = document.getElementById("levesek");
-    
-    window.addEventListener("onload", async function () {
-        let baseUrl = "http://localhost/Levesek-feladat/backend/levesek/";        
-        let options = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        };        
-        let response = await fetch(baseUrl, options);
-        let data = await response.json();
-        let tabla = "";
-        tabla = `
+
+    let baseUrl = "http://localhost/Levesek-feladat/backend/levesek";
+    let options = {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+            "Content-Type": "application/json",
+            'Access-Control-Allow-Origin':'*'
+        }
+    };
+    let response = await fetch(baseUrl, options);
+    let data = await response.json();
+    console.log(data);
+    tabla = `
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
@@ -26,13 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </thead>
                             <tbody>
                             `;
-        let row = 1;
-        data.forEach(element => {
-            tabla += `<tr><th scope='row'>` + element.megnevezes + `</th>  <td id="nev`+element.azon+`">` + element.nev + `</td><td id="szulev`+element.azon+`">` + element.szulev + `</td><td id="irszam`+element.azon+`">` + element.irszam + `</td><td id="orsz`+element.azon+`">` + element.orsz + `</td><td><Button class="btn btn-primary pick" id="` + element.azon + `">Pick</Button></td></tr>`;
-            row++;
-        });
-        tabla += `</tbody>
+    let row = 1;
+    data.forEach(element => {
+        tabla += `<tr><th scope='row'>` + element.megnevezes + `</th></tr>`;
+        row++;
+    });
+    tabla += `</tbody>
                             </table>`;
-        table.innerHTML = tabla;
-    })
+    table.innerHTML = tabla;
+
+    table.innerHTML = tabla;
+
 });
