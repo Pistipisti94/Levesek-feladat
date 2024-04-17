@@ -31,14 +31,6 @@ namespace Levesek
                //1. feladat
                Console.WriteLine($"1.feladat\n{etelek.Length} féle leves van\n");
                 //2.feladat
-                
-                foreach (var item in etelek)
-                {
-                    //Az összes kalória kiiratása
-                    //Console.WriteLine(item.Kaloria);
-                }
-                
-
                 // Ha vannak elemek
                 if (etelek != null && etelek.Length > 0)
                 {
@@ -52,8 +44,6 @@ namespace Levesek
                 {
                     Console.WriteLine("Nincsenek elemek a JSON fájlban.");
                 }
-
-
 
                 Console.ReadLine();
             }
